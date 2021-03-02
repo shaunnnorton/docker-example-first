@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TESTDOCUMENT</title>
+</head>
+<body>
+    <form action="/">
+        {{recipe_form.csrf_token}}
+        <h1>NEWRECIPE</h1>
+        {{recipe_form.title.label}}
+        {{recipe_form.title}}
+    
+        {{recipe_form.description.label}}
+        {{recipe_form.description}}
+
+        {{recipe_form.servings.label}}
+        {{recipe_form.servings}}
+
+        {{recipe_form.ingredients.label}}
+        {{recipe_form.ingredients}}
+
+        {{recipe_form.submit}}
+    
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <form action="/" method="POST">
+        {{ingredient_form.csrf_token}}
+
+        {{ingredient_form.name.label}}
+        {{ingredient_form.name}}
+    
+        {{ingredient_form.submit}}
+    </form>
+
+</body>
+</html>
