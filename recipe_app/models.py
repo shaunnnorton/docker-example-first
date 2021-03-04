@@ -21,7 +21,7 @@ class Recipe(db.Model):
     instructions = db.Column(db.Text())
     ingredients = db.relationship('recipe_ingredient_association',back_populates='recipe')
     favorites = db.relationship("User",secondary="user_recipe", back_populates='favorite_recipes')
-
+    image = db.Column(db.String(200), nullable=True)
 
 class Ingredient(db.Model):
     id = db.Column(db.Integer, primary_key=True)

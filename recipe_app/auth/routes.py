@@ -17,6 +17,7 @@ def login():
         if user and bcrypt.check_password_hash(user.password,form.password.data):
             login_user(user,remember=True)
             next_page = request.args.get('next')
+            print(next_page)
             return redirect(next_page if next_page else '/')
 
     return render_template('login.html',form=form)

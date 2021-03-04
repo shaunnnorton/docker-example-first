@@ -2,7 +2,7 @@ from flask import Blueprint, request, render_template, redirect, url_for, flash
 from recipe_app.main.forms import RecipeForm, IngredientForm
 from recipe_app.models import Recipe, Ingredient, recipe_ingredient_association
 from recipe_app.main.helpers import clean_input_to_list, manage_ingredients
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 
 from recipe_app import app, db
@@ -38,6 +38,7 @@ def create_recipe():
             description=recipe_form.description.data,
             servings=recipe_form.servings.data,
             instructions=recipe_form.instructions.data,
+            image=recipe_form.image_url.data 
         )
         index=0
         for ingredient in recipe_ingredients:
@@ -77,10 +78,7 @@ def view_ingredient(ingredient_id):
 
 
 
-
-
-
-
-@main.route("/Login")
-def login():
-    return "GOAWAY"
+@main.route("/profile", methods=['GET',"POST"])
+@login_required
+def view_profile():
+    return render_template('profile.html')

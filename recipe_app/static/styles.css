@@ -5,11 +5,12 @@ body {
     flex-direction: column;
 }
 
-#title{
-    position: absolute;
-    width: 100%;
-    margin: 0px auto;
+#site-title{
+    position: fixed;
+    width: 50%;
+    margin: auto auto;
     text-align: center;
+    left: 25vw;
 
 }
 
