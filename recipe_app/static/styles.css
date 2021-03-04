@@ -1,0 +1,111 @@
+body {
+    margin: 0px;
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+}
+
+#title{
+    position: absolute;
+    width: 100%;
+    margin: 0px auto;
+    text-align: center;
+
+}
+
+#top-nav {
+    display: flex;
+    align-items: center;
+    background-color: aqua;
+    margin: 0px;
+    padding:0 1em 0 1em;
+    height: 65px;
+    
+}
+
+#top-nav a:first-of-type{
+    margin-right: auto;
+    
+}
+
+#top-nav h1 {
+    margin-right: auto;
+}
+
+.sidenav {
+    margin: 0;
+    padding: 0;
+    width: 75px;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 65px;
+    background-color: lightgrey;
+    padding: 0.2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.sidenav a {
+    margin-bottom:5%;
+    text-align: center;
+    text-overflow: ellipsis;
+    background-color: darkgray;
+    border-radius: 25%;
+    
+
+}
+
+
+
+main {
+    
+    margin-left: 90px;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputs {
+    width: 50%;
+}
+
+textarea.inputs {
+    height: 70px;
+}
+
+p {
+    white-space: pre-line;
+}
+
+.recipe-block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.recipe-card {
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    align-items: center;
+    padding: 0.5%;
+}
+
+
+
+.ingredient-block {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.ingredient-block a {
+    padding: 10px;
+}

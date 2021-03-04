@@ -38,5 +38,13 @@
         {{ingredient_form.submit}}
     </form>
 
+    {% for recipe in recipes %}
+        <p>{{recipe.title}}</p>
+    {% endfor %}
+    <h1>Ingredietns</h1>
+    {% for ingredient in ingredients %}
+        <p>{{ingredient}}</p>
+    {% endfor %}
+
 </body>
 </html>

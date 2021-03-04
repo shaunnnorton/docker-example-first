@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ingredient.name}}</h1>
+
+<div class="recipe-block">
+    {% for recipe in ingredient.recipes %}
+    <div class="recipe-card">
+        <img src="https://via.placeholder.com/150" alt="">
+        <a href="{{url_for('main.view_recipe',recipe_id=recipe.id)}}">{{recipe.recipe.title}}</a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

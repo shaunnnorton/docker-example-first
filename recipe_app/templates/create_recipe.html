@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="{{url_for('main.create_recipe')}}" method="POST">
+    {{recipe_form.csrf_token}}
+    <h1>Create Recipe</h1>
+    {{recipe_form.title.label}}
+    {{recipe_form.title(class_='inputs')}}
+
+    {{recipe_form.description.label}}
+    {{recipe_form.description(class_='inputs')}}
+
+    {{recipe_form.servings.label}}
+    {{recipe_form.servings(class_='inputs')}}
+
+    <fieldset id=ingredients>
+    {{recipe_form.ingredient_amounts.label}}
+    {{recipe_form.ingredient_amounts}}
+    
+    {{recipe_form.ingredients.label}}
+    <span id="hint-text">Enter Ingredients seperate each ingredient with a comma </span>
+    {{recipe_form.ingredients(class_='inputs')}}
+    </fieldset>
+    {{recipe_form.instructions.label}}
+    {{recipe_form.instructions(class_='inputs')}}
+
+
+    {{recipe_form.submit}}
+
+</form>
+
+
+{% endblock %}

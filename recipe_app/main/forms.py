@@ -7,11 +7,15 @@ from recipe_app.models import User, Recipe, Ingredient
 
 class RecipeForm(FlaskForm):
     """Form to create a Recipe"""
-    title = StringField("Title", validators=[DataRequired(),Length(min=4,max=80)])
+    title = StringField("Title", validators=[DataRequired(),Length(min=1,max=80)])
     description = TextAreaField('Description')
     servings = IntegerField("Servings")
-    ingredients = QuerySelectMultipleField('Ingredients',query_factory=lambda: Ingredient.query)
-    submit = SubmitField("Create Ingredient")
+    #ingredients = QuerySelectMultipleField('Ingredients',query_factory=lambda: Ingredient.query)
+    ingredients = TextAreaField("Ingredients", validators=[DataRequired()])
+    ingredient_amounts = TextAreaField("Ingredients", validators=[DataRequired()])
+    instructions = TextAreaField("Instructions")
+    submit = SubmitField("Create Recipe")
+
 class IngredientForm(FlaskForm):
     """Form to create an Ingredient"""
     name = StringField("Name",validators=[DataRequired(),Length(max=80)])
