@@ -14,17 +14,22 @@
 
     {{recipe_form.servings.label}}
     {{recipe_form.servings(class_='inputs')}}
+    <span id="hint-text">Enter Ingredients.Seperate each ingredient or amount with a comma </span>
 
-    <fieldset id=ingredients>
-    {{recipe_form.ingredient_amounts.label}}
-    {{recipe_form.ingredient_amounts}}
+    <fieldset id='in_field'>
+        <div id='am_container'>
+            {{recipe_form.ingredient_amounts.label}}
+            {{recipe_form.ingredient_amounts}}
+        </div>
+        <div id='in_container'>
+            {{recipe_form.ingredients.label}}        
+            {{recipe_form.ingredients(class_='ingredient_inputs')}}
+        </div>
+        
     
-    {{recipe_form.ingredients.label}}
-    <span id="hint-text">Enter Ingredients seperate each ingredient with a comma </span>
-    {{recipe_form.ingredients(class_='inputs')}}
     </fieldset>
-    {{recipe_form.instructions.label}}
-    {{recipe_form.instructions(class_='inputs')}}
+        {{recipe_form.instructions.label}}
+        {{recipe_form.instructions(class_='inputs')}}
 
 
     {{recipe_form.submit}}

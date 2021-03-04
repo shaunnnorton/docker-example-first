@@ -5,6 +5,10 @@ body {
     flex-direction: column;
 }
 
+#hint-text {
+    font-weight: 100;
+}
+
 #site-title{
     position: fixed;
     width: 50%;
@@ -109,4 +113,53 @@ p {
 
 .ingredient-block a {
     padding: 10px;
+}
+
+#in_field {
+    display: flex;
+    margin: 0em;
+    width: 50%;
+    padding: 0mm;
+    justify-content: center;
+    height: 125px;
+}
+
+#in_field div {
+    
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#ingredients{
+    width: 75%;
+    align-self: flex-start;
+    margin-top: auto;
+    height: 110px;
+}
+
+#ingredient_amounts {
+    width: 50%;
+    align-self: flex-end;
+    justify-self: end;
+    margin-top: auto;
+    height: 110px;
+    
+}
+#in_container{
+    width: 75%;
+}
+#in_container label{
+    padding-left: 3px;
+    border-left: solid black 1px;
+}
+
+#am_container {
+    width: 25%;
+}
+#am_container label{
+    padding-right: 3px;
+    text-align: right;
+    border-right: solid black 1px;
+
 }

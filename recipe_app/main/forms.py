@@ -13,7 +13,7 @@ class RecipeForm(FlaskForm):
     servings = IntegerField("Servings")
     #ingredients = QuerySelectMultipleField('Ingredients',query_factory=lambda: Ingredient.query)
     ingredients = TextAreaField("Ingredients", validators=[DataRequired()])
-    ingredient_amounts = TextAreaField("Ingredients", validators=[DataRequired()])
+    ingredient_amounts = TextAreaField("Amount", validators=[DataRequired()])
     instructions = TextAreaField("Instructions")
     image_url = URLField("Image URL")
     submit = SubmitField("Create Recipe")

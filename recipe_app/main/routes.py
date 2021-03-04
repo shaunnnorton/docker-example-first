@@ -72,7 +72,7 @@ def view_ingredient(ingredient_id):
     context = {
         'ingredient':ingredient
     }
-    print(ingredient.recipes)
+    
     return render_template('ingredient.html', **context)
 
 
