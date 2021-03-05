@@ -101,3 +101,22 @@ def search():
     
     
     return render_template('search.html', form=form)
+
+
+@main.route('/favorite/<recipe_id>')
+@login_required
+def add_favorite(recipe_id):
+    recipe=Recipe.query.get(recipe_id)
+    current_user.favorite_recipes.append(recipe)
+    db.session.commit()
+    flash(f'You Have Favorited This Recipe!')
+    return redirect(url_for('main.view_recipe',recipe_id=recipe_id))
+
+@main.route('/unfavorite/<recipe_id>')
+@login_required
+def remove_favorite(recipe_id):
+    recipe=Recipe.query.get(recipe_id)
+    current_user.favorite_recipes.remove(recipe)
+    db.session.commit()
+    flash(f'You Have Unfavorited This Recipe!')
+    return redirect(url_for('main.view_recipe',recipe_id=recipe_id))

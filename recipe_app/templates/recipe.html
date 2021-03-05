@@ -2,7 +2,12 @@
 
 {% block content %}
 <h1>{{recipe.title}}</h1>
-
+{% if current_user.is_authenticated and recipe not in current_user.favorite_recipes%}
+<a href="{{url_for('main.add_favorite', recipe_id=recipe.id)}}">Favorite</a>
+{% endif %}
+{% if current_user.is_authenticated and recipe in current_user.favorite_recipes%}
+<a href="{{url_for('main.remove_favorite', recipe_id=recipe.id)}}">Unfavorite</a>
+{% endif %}
 
 {% if recipe.image %}
 <img src="{{recipe.image}}" alt="Photo of {{recipe.title}}">
