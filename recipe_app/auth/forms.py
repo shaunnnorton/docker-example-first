@@ -4,6 +4,7 @@ from wtforms.validators import DataRequired, Length, ValidationError
 from recipe_app.models import User
 
 class SignUpForm(FlaskForm):
+    """Form for signing up"""
     username = StringField("Username", validators=[DataRequired(),Length(min=3,max=80)])
     password = PasswordField('Password',validators=[DataRequired(),Length(min=8)])
     submit = SubmitField("Sign Up")
@@ -15,6 +16,7 @@ class SignUpForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
+    """Form for logging in"""
     username = StringField("Username",validators=[DataRequired()])
     password = PasswordField('Password',validators=[DataRequired()])
     submit = SubmitField("Log In")

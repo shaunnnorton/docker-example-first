@@ -14,6 +14,7 @@ class User(db.Model,UserMixin):
 
 
 class Recipe(db.Model):
+    """RECIPE MODEL"""
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80), nullable=False)
     description = db.Column(db.Text())
@@ -24,6 +25,7 @@ class Recipe(db.Model):
     image = db.Column(db.String(200), nullable=True)
 
 class Ingredient(db.Model):
+    """INGREDIENT MODEL """
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80),nullable=False)
     recipes = db.relationship('recipe_ingredient_association',back_populates='ingredient')
@@ -35,6 +37,7 @@ class Ingredient(db.Model):
         return self.name
 
 class recipe_ingredient_association(db.Model):
+    """ASSOCIATION BETWEEN RECIPES AND INGREDIENTS TO INCLUDE AMOUMT"""
     __tablename__ = 'recipe_ingredient_association'
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'), primary_key=True)
     ingredient_id = db.Column(db.Integer, db.ForeignKey('ingredient.id'), primary_key=True)

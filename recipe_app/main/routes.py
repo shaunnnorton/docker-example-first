@@ -13,6 +13,7 @@ main = Blueprint('main', __name__)
 
 @main.route('/',methods=['GET','POST'])
 def homepage():
+    """Homepage to be rendered on base route"""
     context = {
         'recipes':Recipe.query.all(),
         'ingredients':Ingredient.query.all()
@@ -24,6 +25,7 @@ def homepage():
 @main.route('/create-recipe',methods=['GET','POST'])
 @login_required
 def create_recipe():
+    """Allows the user to create a recipe if they are authenticated"""
     recipe_form = RecipeForm()
 
     context = {
@@ -59,6 +61,7 @@ def create_recipe():
 
 @main.route('/recipe/<recipe_id>')
 def view_recipe(recipe_id):
+    """Shows information for a recipe with given recipe id """
     recipe = Recipe.query.get(recipe_id)
     context = {
         "recipe":recipe
@@ -68,6 +71,7 @@ def view_recipe(recipe_id):
 
 @main.route('/ingredient/<ingredient_id>')
 def view_ingredient(ingredient_id):
+    """Shows All recipes with ingredient as and ingredient"""
     ingredient = Ingredient.query.get(ingredient_id)
     context = {
         'ingredient':ingredient
@@ -81,10 +85,12 @@ def view_ingredient(ingredient_id):
 @main.route("/profile", methods=['GET',"POST"])
 @login_required
 def view_profile():
+    """Shows the profile of the currently logged in user"""
     return render_template('profile.html')
 
 @main.route('/search', methods=['GET','POST'])
 def search():
+    """Shows a page allowing for the searching of a recipe or ingredient"""
     form = SearchForm()
     if form.validate_on_submit():
         print('HELLO')
@@ -106,6 +112,7 @@ def search():
 @main.route('/favorite/<recipe_id>')
 @login_required
 def add_favorite(recipe_id):
+    """Adds the recipe with given id the the current users favorites"""
     recipe=Recipe.query.get(recipe_id)
     current_user.favorite_recipes.append(recipe)
     db.session.commit()
@@ -115,6 +122,7 @@ def add_favorite(recipe_id):
 @main.route('/unfavorite/<recipe_id>')
 @login_required
 def remove_favorite(recipe_id):
+    """Removes the recipe with the given recipe_id from the current users favorites."""
     recipe=Recipe.query.get(recipe_id)
     if recipe in current_user.favorite_recipes:
         current_user.favorite_recipes.remove(recipe)

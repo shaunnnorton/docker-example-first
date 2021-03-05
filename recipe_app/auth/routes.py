@@ -11,6 +11,7 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/login',methods=['GET',"POST"])
 def login():
+    """Route for loggging in a user"""
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
@@ -24,6 +25,7 @@ def login():
 
 @auth.route('/signup', methods=['GET', 'POST'])
 def signup():
+    """Creates a new User Model provided informaiton from the signup form"""
     form = SignUpForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
@@ -40,5 +42,6 @@ def signup():
 
 @auth.route('/logout')
 def logout():
+    """Signs out the current user."""
     logout_user()
     return redirect('/')

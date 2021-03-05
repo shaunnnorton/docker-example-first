@@ -7,6 +7,7 @@ from flask_login import current_user
 
 
 def login(client, username, password):
+    """logs in a user for testing"""
     data = {
         'username':username,
         'password':password
@@ -14,15 +15,19 @@ def login(client, username, password):
     return client.post('/login', data=data, follow_redirects=True)
 
 def logout(client):
+    """Logs out a user for testing"""
     return client.get("/logout", follow_redirects=True)
 
 def create_user():
+    """Creates a test user"""
+
     password = bcrypt.generate_password_hash('password').decode('utf-8')
     user = User(username='shaun', password=password)
     db.session.add(user)
     db.session.commit()
 
 def create_recipe():
+    """Creates two test recipes with ingredients"""
     h2o = Ingredient(name='water')
     ingredients = [Ingredient(name='turkey'),Ingredient(name='ham'),Ingredient(name='potatoes'), h2o]
     r1 = Recipe(
