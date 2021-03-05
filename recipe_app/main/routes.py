@@ -116,7 +116,8 @@ def add_favorite(recipe_id):
 @login_required
 def remove_favorite(recipe_id):
     recipe=Recipe.query.get(recipe_id)
-    current_user.favorite_recipes.remove(recipe)
-    db.session.commit()
+    if recipe in current_user.favorite_recipes:
+        current_user.favorite_recipes.remove(recipe)
+        db.session.commit()
     flash(f'You Have Unfavorited This Recipe!')
     return redirect(url_for('main.view_recipe',recipe_id=recipe_id))
