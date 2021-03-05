@@ -1,5 +1,5 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash
-from recipe_app.main.forms import RecipeForm, IngredientForm
+from recipe_app.main.forms import RecipeForm, IngredientForm, SearchForm
 from recipe_app.models import Recipe, Ingredient, recipe_ingredient_association
 from recipe_app.main.helpers import clean_input_to_list, manage_ingredients
 from flask_login import login_required, current_user
@@ -82,3 +82,22 @@ def view_ingredient(ingredient_id):
 @login_required
 def view_profile():
     return render_template('profile.html')
+
+@main.route('/search', methods=['GET','POST'])
+def search():
+    form = SearchForm()
+    if form.validate_on_submit():
+        print('HELLO')
+        
+        recipe_results = Recipe.query.filter(Recipe.title.like(f'%{form.search_query.data}%')).all()
+        ingredient_results = Ingredient.query.filter(Ingredient.name.like(f'%{form.search_query.data}%')).all()
+        context = {
+            'recipe_results':recipe_results,
+            'ingredient_results':ingredient_results,
+            'form':SearchForm(search_query=form.search_query.data)
+        }
+        print(context)
+        return render_template('search.html', **context)
+    
+    
+    return render_template('search.html', form=form)

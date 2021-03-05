@@ -22,3 +22,8 @@ class IngredientForm(FlaskForm):
     """Form to create an Ingredient"""
     name = StringField("Name",validators=[DataRequired(),Length(max=80)])
     submit = SubmitField("ADD Ingredient")
+
+class SearchForm(FlaskForm):
+    "Form to be used to search"
+    search_query = StringField("Search", validators=[DataRequired()])
+    submit = SubmitField("Search")

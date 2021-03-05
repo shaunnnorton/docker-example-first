@@ -53,13 +53,14 @@ body {
 }
 
 .sidenav a {
-    margin-bottom:5%;
+    margin:0 auto 0 auto ;
     text-align: center;
     text-overflow: ellipsis;
     background-color: darkgray;
     border-radius: 25%;
+    width: fit-content;
+    padding: 3px;
     
-
 }
 
 
