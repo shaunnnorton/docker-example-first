@@ -7,6 +7,24 @@
     <title>TESTDOCUMENT</title>
 </head>
 <body>
+    <form action="/">
+        <input type="text" name="turkey" id="">
+        <input type="text" name="turkey" id="">
+
+        <input type="text" name="turkey" id="">
+
+        <input type="text" name="turkey" id="">
+
+        <input type="text" name="turkey" id="">
+
+        <button>submit</button>
+    </form>
+    
+    
+    
+    
+    
+    
     <h1>THIS IS A TEST PAGE IF YOU CAN SEE IT THERE IS A LARGE PROBLEM</h1>
     <form action="/">
         {{recipe_form.csrf_token}}
@@ -30,12 +48,12 @@
     <br>
     <br>
     <br>
-    <form action="/" method="POST">
+    <form action="/Test/Secret/GoAway" method="POST">
         {{ingredient_form.csrf_token}}
-
+        <fieldset id="ingredient_field">
         {{ingredient_form.name.label}}
         {{ingredient_form.name}}
-    
+        </fieldset>
         {{ingredient_form.submit}}
     </form>
 
@@ -48,4 +66,5 @@
     {% endfor %}
 
 </body>
+<script src="../../static/main.js"></script>
 </html>

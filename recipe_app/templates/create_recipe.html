@@ -16,7 +16,7 @@
     {{recipe_form.servings(class_='inputs')}}
     <span id="hint-text">Enter Ingredients.Seperate each ingredient or amount with a comma </span>
 
-    <fieldset id='in_field'>
+    <fieldset id='ingredient_field'>
         <div id='am_container'>
             {{recipe_form.ingredient_amounts.label}}
             {{recipe_form.ingredient_amounts}}
@@ -37,4 +37,6 @@
 </form>
 
 
+<script src="../../static/main.js"></script>
 {% endblock %}
+

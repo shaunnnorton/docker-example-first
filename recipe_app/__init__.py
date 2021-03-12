@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, url_for
 from flask_sqlalchemy import SQLAlchemy
 from recipe_app.config import Config
 from flask_login import LoginManager
@@ -32,3 +32,4 @@ app.register_blueprint(auth_routes)
 #CREATING DATABASE
 with app.app_context():
     db.create_all()
+

@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, redirect, url_for, flash
+from flask import Blueprint, request, render_template, redirect, url_for, flash,send_from_directory
 from recipe_app.main.forms import RecipeForm, IngredientForm, SearchForm
 from recipe_app.models import Recipe, Ingredient, recipe_ingredient_association
 from recipe_app.main.helpers import clean_input_to_list, manage_ingredients
@@ -10,6 +10,9 @@ from recipe_app import app, db
 
 main = Blueprint('main', __name__)
 
+@main.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),'favicon.ico')
 
 @main.route('/',methods=['GET','POST'])
 def homepage():
@@ -33,17 +36,22 @@ def create_recipe():
     }
 
     if recipe_form.validate_on_submit():
-        recipe_ingredients = manage_ingredients(clean_input_to_list(recipe_form.ingredients.data))
-        ingredient_amounts = recipe_form.ingredient_amounts.data.split(",")
+        recipe_ingredients = manage_ingredients(recipe_form.ingredients.raw_data)
+        print(recipe_ingredients)
+        ingredient_amounts = recipe_form.ingredient_amounts.raw_data
+        imgurl = recipe_form.image_url.data
+        if len(recipe_form.image_url.data) < 6:
+            imgurl = 'https://previews.dropbox.com/p/orig/ABEI37O6AX8cGGOnu9pb1m2BkVoug9nCfCfykbZ1cDCGvy__K8mGh4hEOZYGmiAkYnUf3E89B7aihg8ey3nwgSiY8HlqdvGmO4FjbIhi0AYbtKMqHdUTEUQXlG8vktk1ugd4lR8iRCEof4vQfQ5W7tUpf_SqotNB3YrTbXjoEJbAkJ9s4OiQtQl7p9Tfe14L9TodIorPJu9BhG_rnkPzY5sia47-ulbGptEf54NWhgylkIedMYqGlnonUVxyT4t3AwKrXYBS6g3t2XlUWAW5OIC6Xve7OZnaDKC-GlU2efBw3n75vt7GpjPYFik7sLQGqR9BOumbtoIivrLCnwuLrjC_/p.gif?fv_content=true&size_mode=5'
+        
         new_recipe = Recipe(
             title=recipe_form.title.data,
             description=recipe_form.description.data,
             servings=recipe_form.servings.data,
             instructions=recipe_form.instructions.data,
-            image=recipe_form.image_url.data 
+            image=imgurl
         )
         index=0
-        for ingredient in recipe_ingredients:
+        for ingredient in recipe_ingredients[:-1]:
             if index < len(ingredient_amounts):
                 new_association = recipe_ingredient_association(amount=ingredient_amounts[index],ingredient=ingredient)
                 new_recipe.ingredients.append(new_association)
@@ -129,3 +137,18 @@ def remove_favorite(recipe_id):
         db.session.commit()
     flash(f'You Have Unfavorited This Recipe!')
     return redirect(url_for('main.view_recipe',recipe_id=recipe_id))
+
+
+@main.route("/Test/Secret/GoAway",methods=["GET","POST"])
+def TestRoute():
+    recipe_form = RecipeForm()
+    ingredient_form = IngredientForm()
+        
+    if ingredient_form.validate_on_submit():   
+        print(ingredient_form.name.raw_data)
+
+    context = {
+        'recipe_form':recipe_form,
+        'ingredient_form':ingredient_form
+    }
+    return render_template('test.html',**context)

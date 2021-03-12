@@ -25,6 +25,8 @@ body {
     margin: 0px;
     padding:0 1em 0 1em;
     height: 65px;
+    position: sticky;
+    top: 0;
     
 }
 
@@ -101,6 +103,11 @@ p {
     background-color: whitesmoke;
     align-items: center;
     padding: 0.5%;
+    height: 100px;
+    width: 100px;
+}
+.recipe-card img {
+    width: 90px ;
 }
 
 
@@ -116,16 +123,16 @@ p {
     padding: 10px;
 }
 
-#in_field {
+#ingredient_field {
     display: flex;
     margin: 0em;
     width: 50%;
     padding: 0mm;
     justify-content: center;
-    height: 125px;
+    height: fit-content;
 }
 
-#in_field div {
+#ingredient_field div {
     
     display: flex;
     flex-direction: column;
@@ -136,7 +143,7 @@ p {
     width: 75%;
     align-self: flex-start;
     margin-top: auto;
-    height: 110px;
+    height: 10px;
 }
 
 #ingredient_amounts {
@@ -144,7 +151,7 @@ p {
     align-self: flex-end;
     justify-self: end;
     margin-top: auto;
-    height: 110px;
+    height: 10px;
     
 }
 #in_container{
