@@ -3,7 +3,7 @@ from recipe_app.main.forms import RecipeForm, IngredientForm, SearchForm
 from recipe_app.models import Recipe, Ingredient, recipe_ingredient_association
 from recipe_app.main.helpers import clean_input_to_list, manage_ingredients
 from flask_login import login_required, current_user
-
+import os
 
 from recipe_app import app, db
 
