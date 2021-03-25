@@ -30,4 +30,8 @@
     {{recipe.instructions}}
 </p>
 
+{% if current_user.is_authenticated %}
+<a href="{{url_for('main.remove_recipe',recipe_id=recipe.id)}}">Delete Recipe</a>
+{% endif %}
+
 {% endblock %}

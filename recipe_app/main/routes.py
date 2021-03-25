@@ -152,3 +152,15 @@ def TestRoute():
         'ingredient_form':ingredient_form
     }
     return render_template('test.html',**context)
+
+@main.route("/remove/recipe/<recipe_id>")
+@login_required
+def remove_recipe(recipe_id):
+    if current_user.is_authenticated:
+        recipe = Recipe.query.get(recipe_id)
+        for item in recipe.ingredients:
+            db.session.delete(item)
+        db.session.delete(recipe)
+        db.session.commit()
+        return redirect(url_for("main.homepage"))
+    return redirect(url_for("main.homepage"))
