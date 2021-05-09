@@ -168,6 +168,10 @@ def remove_recipe(recipe_id):
 
 @main.route("/secret/mothersday/2021", methods=["GET"])
 def mothers_day():
+    if request.user_agent.platform == "iphone":
+        return render_template("mothersdaytessa.html")
+    
+    
     print(request.user_agent.platform)
     
     return render_template("mothersdaymom.html")
