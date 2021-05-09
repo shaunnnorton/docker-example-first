@@ -195,3 +195,28 @@ p {
     border-right: solid black 1px;
 
 }
+
+.mdblock {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+}
+
+.mdtitle {
+    color:red;
+}
+
+.mdimages img {
+    padding: 10px;
+    background-color: whitesmoke;
+    border-style: unset;
+    max-width: 300px;
+}
+
+.confet {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}

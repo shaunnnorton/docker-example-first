@@ -164,3 +164,10 @@ def remove_recipe(recipe_id):
         db.session.commit()
         return redirect(url_for("main.homepage"))
     return redirect(url_for("main.homepage"))
+
+
+@main.route("/secret/mothersday/2021", methods=["GET"])
+def mothers_day():
+    print(request.user_agent.platform)
+    
+    return render_template("mothersdaymom.html")
