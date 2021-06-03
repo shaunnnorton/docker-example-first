@@ -41,7 +41,7 @@ def create_recipe():
         ingredient_amounts = recipe_form.ingredient_amounts.raw_data
         imgurl = recipe_form.image_url.data
         if len(recipe_form.image_url.data) < 6:
-            imgurl = 'https://previews.dropbox.com/p/orig/ABEI37O6AX8cGGOnu9pb1m2BkVoug9nCfCfykbZ1cDCGvy__K8mGh4hEOZYGmiAkYnUf3E89B7aihg8ey3nwgSiY8HlqdvGmO4FjbIhi0AYbtKMqHdUTEUQXlG8vktk1ugd4lR8iRCEof4vQfQ5W7tUpf_SqotNB3YrTbXjoEJbAkJ9s4OiQtQl7p9Tfe14L9TodIorPJu9BhG_rnkPzY5sia47-ulbGptEf54NWhgylkIedMYqGlnonUVxyT4t3AwKrXYBS6g3t2XlUWAW5OIC6Xve7OZnaDKC-GlU2efBw3n75vt7GpjPYFik7sLQGqR9BOumbtoIivrLCnwuLrjC_/p.gif?fv_content=true&size_mode=5'
+            imgurl = 'https://www.dropbox.com/s/bw127notc75i8yn/Chicken.gif?raw=1'
         
         new_recipe = Recipe(
             title=recipe_form.title.data,

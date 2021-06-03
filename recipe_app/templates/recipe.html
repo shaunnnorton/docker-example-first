@@ -1,13 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="recipe-display">
 <h1>{{recipe.title}}</h1>
-{% if current_user.is_authenticated and recipe not in current_user.favorite_recipes%}
-<a href="{{url_for('main.add_favorite', recipe_id=recipe.id)}}">Favorite</a>
-{% endif %}
-{% if current_user.is_authenticated and recipe in current_user.favorite_recipes%}
-<a href="{{url_for('main.remove_favorite', recipe_id=recipe.id)}}">Unfavorite</a>
-{% endif %}
+
 
 {% if recipe.image %}
 <img src="{{recipe.image}}" alt="Photo of {{recipe.title}}">
@@ -29,9 +25,19 @@
 <p>
     {{recipe.instructions}}
 </p>
+<div class="modifiers">
+    {% if current_user.is_authenticated %}
+    <a href="{{url_for('main.remove_recipe',recipe_id=recipe.id)}}">Delete Recipe</a>
+    <a href="#">Edit Recipe</a>
+    {% endif %}
+    {% if current_user.is_authenticated and recipe not in current_user.favorite_recipes%}
+    <a href="{{url_for('main.add_favorite', recipe_id=recipe.id)}}">Favorite</a>
+    {% endif %}
+    {% if current_user.is_authenticated and recipe in current_user.favorite_recipes%}
+    <a href="{{url_for('main.remove_favorite', recipe_id=recipe.id)}}">Unfavorite</a>
+    {% endif %}
+    
+</div>
 
-{% if current_user.is_authenticated %}
-<a href="{{url_for('main.remove_recipe',recipe_id=recipe.id)}}">Delete Recipe</a>
-{% endif %}
-
+</div>
 {% endblock %}

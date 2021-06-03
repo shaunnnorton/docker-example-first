@@ -11,7 +11,7 @@ body {
 }
 
 #site-title{
-    position: fixed;
+    position: absolute;
     width: 50%;
     margin: auto auto;
     text-align: center;
@@ -25,7 +25,7 @@ body {
     background-color: rgb(32, 29, 29);
     margin: 0px;
     padding:0 1em 0 1em;
-    height: 65px;
+    height: 3rem;
     position: sticky;
     top: 0;
     color: whitesmoke;
@@ -53,16 +53,16 @@ body {
 .sidenav {
     margin: 0;
     padding: 0;
-    width: 75px;
-    height: 100%;
-    position: fixed;
+    width: 100%;
+    height: 3rem;
+    position: sticky;
     left: 0;
-    top: 65px;
+    top: 3rem;
     background-color: rgb(41, 17, 56);
     padding: 0.2em;
     display: flex;
-    flex-direction: column;
     justify-content: space-around;
+    align-items: center;
 }
 
 .sidenav a {
@@ -81,8 +81,6 @@ body {
 
 
 main {
-    
-    margin-left: 90px;
 }
 
 
@@ -219,4 +217,26 @@ p {
     position: absolute;
     width: 100%;
     height: 100%;
+}
+
+#SignupLabel {
+    margin-bottom: 0.25rem;
+}
+#SignupDescription {
+    color: white;
+    margin: 0.5rem;
+}
+
+#search_form {
+    margin-top: 1rem;
+}
+.recipe-display {
+    margin: 5rem 5rem 5rem 5rem;
+    background-color: wheat;
+    color: black;
+    min-height: 50rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: blanchedalmond 0.25rem inset ;
 }

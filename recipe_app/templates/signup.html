@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 <form action="{{url_for('auth.signup')}}" method="POST">
-    <h1>Signup</h1>
+    <h1 id="SignupLabel">Signup</h1>
+    <p id="SignupDescription">Create an account to make and favorite recipes!</p>
+
     {{form.csrf_token}}
 
     {{form.username.label}}
