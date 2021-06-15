@@ -27,14 +27,14 @@
 </p>
 <div class="modifiers">
     {% if current_user.is_authenticated %}
-    <a href="{{url_for('main.remove_recipe',recipe_id=recipe.id)}}">Delete Recipe</a>
+    <a href="{{url_for('modify.remove_recipe',recipe_id=recipe.id)}}">Delete Recipe</a>
     <a href="#">Edit Recipe</a>
     {% endif %}
     {% if current_user.is_authenticated and recipe not in current_user.favorite_recipes%}
-    <a href="{{url_for('main.add_favorite', recipe_id=recipe.id)}}">Favorite</a>
+    <a href="{{url_for('modify.add_favorite', recipe_id=recipe.id)}}">Favorite</a>
     {% endif %}
     {% if current_user.is_authenticated and recipe in current_user.favorite_recipes%}
-    <a href="{{url_for('main.remove_favorite', recipe_id=recipe.id)}}">Unfavorite</a>
+    <a href="{{url_for('modify.remove_favorite', recipe_id=recipe.id)}}">Unfavorite</a>
     {% endif %}
     
 </div>

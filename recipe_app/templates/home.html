@@ -5,14 +5,14 @@
     {% for recipe in recipes %}
     <div class="recipe-card">
         <img src="{{recipe.image}}" alt="">
-        <a href="{{url_for('main.view_recipe',recipe_id=recipe.id)}}">{{recipe.title}}</a>
+        <a href="{{url_for('view.view_recipe',recipe_id=recipe.id)}}">{{recipe.title}}</a>
     </div>
     {% endfor %}
 </div>
 <h2>All Ingredients</h2>
 <div class="ingredient-block">
     {% for ingredient in ingredients %}
-        <a href="{{url_for('main.view_ingredient',ingredient_id=ingredient.id)}}">{{ingredient}}</a>
+        <a href="{{url_for('view.view_ingredient',ingredient_id=ingredient.id)}}">{{ingredient}}</a>
     {% endfor %}
 </div>
 

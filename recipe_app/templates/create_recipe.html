@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<form action="{{url_for('main.create_recipe')}}" method="POST">
+<form action="{{url_for('modify.create_recipe')}}" method="POST">
     {{recipe_form.csrf_token}}
     <h1>Create Recipe</h1>
     {{recipe_form.title.label}}

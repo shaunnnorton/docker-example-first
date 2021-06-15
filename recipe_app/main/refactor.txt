@@ -1,0 +1,5 @@
+Create Three new routes files (view, modify, misc) DONE
+Move routes to respective folders DONE
+Modify __init__.py to use new routes DONE
+Write tests for missing routes 
+Create Documentation

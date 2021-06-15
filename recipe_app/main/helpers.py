@@ -1,15 +1,14 @@
 from recipe_app.models import Ingredient
-from recipe_app import app, db
-from difflib import SequenceMatcher
+from recipe_app import db
 
 
 def clean_input_to_list(_text):
     """Splits a string at commas and creates a list"""
-    striped_input = _text.replace(' ','|')
+    striped_input = _text.replace(' ', '|')
     striped_input = striped_input.lower()
     seperated_input = striped_input.split(",")
     return seperated_input
-    
+
 
 # def split_amount_ingredient(_list):
 #     """Attempts to split the amount of an ingredient from the name"""
@@ -18,9 +17,9 @@ def clean_input_to_list(_text):
 #     for item in _list:
 
 
-
 def manage_ingredients(ingredient_list):
-    """Insures all items in provided list are Ingredient models by querying or creating one"""
+    """Insures all items in provided list are Ingredient models by querying or
+    creating one"""
     ingredient_list_db = list()
     for item in ingredient_list:
         clean_item = item.lower()
@@ -34,6 +33,7 @@ def manage_ingredients(ingredient_list):
             db.session.commit()
             ingredient_list_db.append(new_ingredient)
     return ingredient_list_db
+
 
 test_string = "1 Cup Apples, 2 TBS Cheese, 5 Eggs"
 print(clean_input_to_list(test_string))
